@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIT FORGE</title>
+
+    <!-- Website Logo / Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.avif">
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+        .cta-button {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .schedule-table th, .schedule-table td {
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+        }
+        .schedule-table th {
+            font-weight: 700;
+            color: #f87171;
+        }
+        .flow-restore-emoji {
+            font-size: 3rem;
+            line-height: 1;
+            display: block;
+            margin: 0 auto 1rem;
+        }
+    </style>
+</head>
+
+
+<!-- Bootstrap JS (bundle includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-sm shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+             <img src="assets/logo.avif" 
+     alt="FIT FORGE Logo" 
+     class="h-12 w-12 rounded-full object-cover mr-2">
+
+             <span class="text-3xl font-extrabold text-red-600 tracking-wider hidden sm:inline">FIT FORGE</span>
+            </a>
+
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-red-600 transition duration-300">About</a>
+                <a href="#classes" class="hover:text-red-600 transition duration-300">Classes</a>
+                <a href="#schedule" class="hover:text-red-600 transition duration-300">Schedule</a> <!-- NEW LINK -->
+                <a href="#pricing" class="hover:text-red-600 transition duration-300">Pricing</a>
+                <a href="#trainers" class="hover:text-red-600 transition duration-300">Trainers</a>
+                <a href="#contact" class="hover:text-red-600 transition duration-300">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition duration-200">
+                <i data-lucide="menu" class="w-6 h-6 text-red-600"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown (Initially Hidden) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 w-full">
+            <nav class="flex flex-col space-y-2 p-4">
+                <a href="#about" class="block py-2 text-center hover:bg-gray-700 rounded-md transition duration-300">About</a>
+                <a href="#classes" class="block py-2 text-center hover:bg-gray-700 rounded-md transition duration-300">Classes</a>
+                <a href="#schedule" class="block py-2 text-center hover:bg-gray-700 rounded-md transition duration-300">Schedule</a> <!-- NEW LINK -->
+                <a href="#pricing" class="block py-2 text-center hover:bg-gray-700 rounded-md transition duration-300">Pricing</a>
+                <a href="#trainers" class="block py-2 text-center hover:bg-gray-700 rounded-md transition duration-300">Trainers</a>
+                <a href="#contact" class="block py-2 text-center hover:bg-gray-700 rounded-md transition duration-300">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+<!-- HERO: Bootstrap carousel integrated with your original copy/CTA -->
+<section id="hero" class="bg-black pt-16 pb-16 md:pt-0 md:pb-0">
+  <div class="container mx-auto px-4">
+    <div class="row align-items-center min-h-[60vh] md:min-h-[70vh]">
+
+      <!-- Left: Headline + CTA (unchanged content, same classes) -->
+      <div class="col-12 col-md-6 order-2 order-md-1 p-8 md:p-12 text-center md:text-left">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight text-white">
+          SCULPT YOUR <span class="text-red-600">BEST SELF.</span>
+        </h1>
+        <p class="text-lg md:text-xl mb-8 text-gray-400">
+          Unleash your potential with state-of-the-art equipment, expert trainers, and community support.
+        </p>
+        <a href="#pricing" class="cta-button inline-block bg-red-600 text-white font-bold py-3 px-8 rounded-full text-lg shadow-xl hover:bg-red-700 transition duration-300">
+          START YOUR FREE WEEK
+        </a>
+      </div>
+
+      <!-- Right: Carousel (Bootstrap) -->
+      <div class="col-12 col-md-6 order-1 order-md-2 d-flex justify-content-center items-center overflow-hidden rounded-xl md:rounded-l-none relative min-h-[40vh] md:min-h-[70vh]">
+        <div id="heroCarousel" class="carousel slide w-full h-full rounded-xl shadow-2xl" data-bs-ride="carousel">
+          
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+
+          <!-- Slides -->
+          <div class="carousel-inner w-full h-full rounded-xl" style="min-height:40vh;">
+  
+  <div class="carousel-item active">
+    <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1"
+         class="d-block w-100 h-100 object-cover rounded-xl"
+         alt="Modern Gym 1" style="object-fit:cover; height:100%;">
+  </div>
+
+  <div class="carousel-item">
+    <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1"
+         class="d-block w-100 h-100 object-cover rounded-xl"
+         alt="Modern Gym 2" style="object-fit:cover; height:100%;">
+  </div>
+
+  <div class="carousel-item">
+  <img src="https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1"
+       class="d-block w-100 h-100 object-cover rounded-xl"
+       alt="Modern Gym 3" style="object-fit:cover; height:100%;">
+</div>
+
+
+</div>
+
+
+          <!-- Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Previous slide">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Next slide">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Why Choose <span class="text-red-600">FIT FORGE</span>?</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-900 p-6 rounded-xl shadow-lg border border-red-800/20 hover:border-red-600 transition duration-300">
+                    <i data-lucide="dumbbell" class="w-10 h-10 text-red-600 mb-4 mx-auto md:mx-0"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Modern Equipment</h3>
+                    <p class="text-gray-400">We feature the latest in cardio machines, functional training gear, and weightlifting platforms.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-gray-900 p-6 rounded-xl shadow-lg border border-red-800/20 hover:border-red-600 transition duration-300">
+                    <i data-lucide="users" class="w-10 h-10 text-red-600 mb-4 mx-auto md:mx-0"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Expert Guidance</h3>
+                    <p class="text-gray-400">Our certified trainers are here to create personalized plans and motivate you every step of the way.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-gray-900 p-6 rounded-xl shadow-lg border border-red-800/20 hover:border-red-600 transition duration-300">
+                    <i data-lucide="zap" class="w-10 h-10 text-red-600 mb-4 mx-auto md:mx-0"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Dynamic Classes</h3>
+                    <p class="text-gray-400">From high-intensity interval training (HIIT) to calming yoga, find the perfect class for your goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes/Services Section - REDESIGNED CARDS -->
+    <section id="classes" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-white">Our Signature <span class="text-red-600">Classes</span></h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Class Card 1: HIIT -->
+                <div class="text-center p-8 rounded-xl shadow-2xl bg-gray-800 border border-gray-700 hover:border-red-600 transition duration-300">
+                    <i data-lucide="flame" class="w-12 h-12 text-red-600 mb-4 mx-auto"></i>
+                    <h3 class="text-2xl font-bold mb-1 text-white">HIIT Blast</h3>
+                    <p class="text-sm text-gray-400">30 min. High energy, maximum calorie burn.</p>
+                </div>
+
+                <!-- Class Card 2: Yoga - ICON FIXED using an Emoji -->
+                <div class="text-center p-8 rounded-xl shadow-2xl bg-gray-800 border border-gray-700 hover:border-red-600 transition duration-300">
+                    <i data-lucide="wind" class="w-12 h-12 text-green-400 mb-4 mx-auto"></i>
+                    <h3 class="text-2xl font-bold mb-1 text-white">Flow & Restore</h3>
+                    <p class="text-sm text-gray-400">60 min. Build strength, flexibility, and mindfulness.</p>
+                </div>
+
+                <!-- Class Card 3: Strength -->
+                <div class="text-center p-8 rounded-xl shadow-2xl bg-gray-800 border border-gray-700 hover:border-red-600 transition duration-300">
+                    <i data-lucide="weight" class="w-12 h-12 text-blue-500 mb-4 mx-auto"></i>
+                    <h3 class="text-2xl font-bold mb-1 text-white">Power Hour</h3>
+                    <p class="text-sm text-gray-400">45 min. Compound lifts and progressive overload training.</p>
+                </div>
+                
+                <!-- Class Card 4: Spin -->
+                <div class="text-center p-8 rounded-xl shadow-2xl bg-gray-800 border border-gray-700 hover:border-red-600 transition duration-300">
+                    <i data-lucide="bike" class="w-12 h-12 text-yellow-500 mb-4 mx-auto"></i>
+                    <h3 class="text-2xl font-bold mb-1 text-white">Cycle RPM</h3>
+                    <p class="text-sm text-gray-400">45 min. High-energy rhythmic cycling workout.</p>
+                </div>
+            </div>
+            <!-- Removed the 'View Full Schedule' link here as we now have a dedicated section -->
+        </div>
+    </section>
+    
+    <!-- NEW SECTION: Class Schedule -->
+    <section id="schedule" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Weekly <span class="text-red-600">Schedule</span></h2>
+            
+            <div class="overflow-x-auto rounded-xl shadow-2xl border border-gray-700">
+                <table class="w-full text-sm text-gray-400 schedule-table">
+                    <thead class="text-xs uppercase bg-gray-900 text-red-400">
+                        <tr>
+                            <th scope="col" class="py-3 px-3">Time</th>
+                            <th scope="col" class="py-3 px-3">Monday</th>
+                            <th scope="col" class="py-3 px-3">Tuesday</th>
+                            <th scope="col" class="py-3 px-3">Wednesday</th>
+                            <th scope="col" class="py-3 px-3">Thursday</th>
+                            <th scope="col" class="py-3 px-3">Friday</th>
+                            <th scope="col" class="py-3 px-3">Saturday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-800 hover:bg-gray-800 transition duration-200">
+                            <th scope="row" class="py-3 px-3 font-medium whitespace-nowrap bg-gray-800 text-white">6:00 AM</th>
+                            <td><span class="text-yellow-500 font-semibold">Cycle RPM</span></td>
+                            <td><span class="text-blue-500 font-semibold">Power Hour</span></td>
+                            <td><span class="text-yellow-500 font-semibold">Cycle RPM</span></td>
+                            <td><span class="text-red-600 font-semibold">HIIT Blast</span></td>
+                            <td><span class="text-blue-500 font-semibold">Power Hour</span></td>
+                            <td class="text-gray-500">-</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 hover:bg-gray-800 transition duration-200">
+                            <th scope="row" class="py-3 px-3 font-medium whitespace-nowrap bg-gray-800 text-white">12:00 PM</th>
+                            <td><span class="text-green-500 font-semibold">Flow & Restore</span></td>
+                            <td><span class="text-red-600 font-semibold">HIIT Blast</span></td>
+                            <td><span class="text-green-500 font-semibold">Flow & Restore</span></td>
+                            <td><span class="text-blue-500 font-semibold">Power Hour</span></td>
+                            <td><span class="text-red-600 font-semibold">HIIT Blast</span></td>
+                            <td class="text-gray-500">-</td>
+                        </tr>
+                        <tr class="hover:bg-gray-800 transition duration-200">
+                            <th scope="row" class="py-3 px-3 font-medium whitespace-nowrap bg-gray-800 text-white">6:30 PM</th>
+                            <td><span class="text-blue-500 font-semibold">Power Hour</span></td>
+                            <td><span class="text-yellow-500 font-semibold">Cycle RPM</span></td>
+                            <td><span class="text-red-600 font-semibold">HIIT Blast</span></td>
+                            <td><span class="text-green-500 font-semibold">Flow & Restore</span></td>
+                            <td><span class="text-yellow-500 font-semibold">Cycle RPM</span></td>
+                            <td><span class="text-red-600 font-semibold">HIIT Blast</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="text-center text-sm text-gray-500 mt-6">Gym operating hours: Mon-Fri: 5am - 10pm | Sat: 8am - 6pm | Sun: Closed</p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-white">Membership <span class="text-red-600">Plans</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Plan 1: Basic -->
+                <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border-2 border-gray-700 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-white">Basic Access</h3>
+                    <p class="text-gray-400 mb-4">The essentials to get started.</p>
+                    <div class="text-4xl font-extrabold mb-6 text-red-600">$49<span class="text-xl text-gray-400 font-normal">/month</span></div>
+                    
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> Full Gym Access</li>
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> Free Weights & Cardio</li>
+                        <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2 text-red-500"></i> Unlimited Classes</li>
+                        <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 mr-2 text-red-500"></i> Personal Trainer Discount</li>
+                    </ul>
+                    
+                    <!-- Updated button with class for JS click handler -->
+                    <a href="#" class="js-plan-cta block text-center bg-gray-700 text-white font-semibold py-3 rounded-full hover:bg-red-600 transition duration-300">Choose Plan</a>
+                </div>
+
+                <!-- Plan 2: Pro (Recommended) -->
+                <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border-4 border-red-600 flex flex-col transform scale-105">
+                    <span class="text-sm font-bold text-center text-white bg-red-600 rounded-full px-3 py-1 mb-4 self-center uppercase">Popular</span>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Pro Fitness</h3>
+                    <p class="text-gray-400 mb-4">Maximum flexibility and results.</p>
+                    <div class="text-5xl font-extrabold mb-6 text-red-600">$79<span class="text-xl text-gray-400 font-normal">/month</span></div>
+                    
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> Full Gym Access</li>
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> Free Weights & Cardio</li>
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> Unlimited Classes</li>
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> 10% Trainer Discount</li>
+                    </ul>
+                    
+                    <!-- Updated button with class for JS click handler -->
+                    <a href="#" class="js-plan-cta block text-center bg-red-600 text-white font-bold py-3 rounded-full hover:bg-red-700 transition duration-300 shadow-lg">Sign Up Now</a>
+                </div>
+                
+                <!-- Plan 3: Elite -->
+                <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border-2 border-gray-700 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-white">Elite Performance</h3>
+                    <p class="text-gray-400 mb-4">Total commitment to your goals.</p>
+                    <div class="text-4xl font-extrabold mb-6 text-red-600">$129<span class="text-xl text-gray-400 font-normal">/month</span></div>
+                    
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> Full Gym Access</li>
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> Free Weights & Cardio</li>
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> Unlimited Classes</li>
+                        <li class="flex items-center text-gray-300"><i data-lucide="check" class="w-5 h-5 mr-2 text-green-500"></i> 2 Free PT Sessions/mo</li>
+                    </ul>
+                    
+                    <!-- Updated button with class for JS click handler -->
+                    <a href="#" class="js-plan-cta block text-center bg-gray-700 text-white font-semibold py-3 rounded-full hover:bg-red-600 transition duration-300">Choose Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+   <section id="trainers" class="py-20 bg-gray-900">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-16 text-white">Meet Our <span class="text-red-600">Trainers</span></h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Trainer 1 -->
+      <div class="text-center p-6 bg-gray-800 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300">
+        <img src="assets/trainers/trainer1.avif"
+        alt="Trainer A"
+        class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+
+        <h3 class="text-xl font-bold text-white">Alex "The Tank" Johnson</h3>
+        <p class="text-red-600 mb-3 font-semibold">Strength & Conditioning</p>
+        <p class="text-gray-400 text-sm">Alex specializes in powerlifting and helping clients achieve dramatic strength gains safely and effectively. Certified CSCS.</p>
+      </div>
+
+      <!-- Trainer 2 -->
+      <div class="text-center p-6 bg-gray-800 rounded-xl shadow-xl hover:bg-gray-700        transition duration-300">
+        <img src="assets/trainers/trainer2.avif"
+        alt="Trainer A"
+        class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+
+        <h3 class="text-xl font-bold text-white">Maria "Flow" Rodriguez</h3>
+        <p class="text-red-600 mb-3 font-semibold">Yoga & Mobility</p>
+        <p class="text-gray-400 text-sm">Maria focuses on holistic wellness, incorporating Vinyasa flow, injury rehabilitation, and mental well-being practices.</p>
+      </div>
+
+      <!-- Trainer 3 -->
+      <div class="text-center p-6 bg-gray-800 rounded-xl shadow-xl hover:bg-gray-700 transition duration-300">
+        <img src="assets/trainers/trainer3.avif"
+        alt="Trainer A"
+        class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+
+        <h3 class="text-xl font-bold text-white">David "Speed" Chen</h3>
+        <p class="text-red-600 mb-3 font-semibold">HIIT & Endurance</p>
+        <p class="text-gray-400 text-sm">David is an expert in high-intensity training, specializing in marathon prep, endurance building, and rapid fat loss programs.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+    <!-- Call to Action / Contact Form -->
+    <section id="contact" class="py-20 bg-gray-700">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-6 text-white">Ready to Start Your Journey?</h2>
+            <p class="text-lg text-center text-gray-300 mb-12">Claim your free trial pass today and feel the difference.</p>
+
+            <div class="max-w-xl mx-auto bg-gray-900 p-8 rounded-xl shadow-2xl">
+                <!-- FORM FIX: Reverted to client-side ID for JS handling (smoother demo) -->
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+    <!-- WEB3FORMS REQUIRED ACCESS KEY -->
+    <input type="hidden" name="access_key" value="fea270ab-556a-4554-917d-315ca60aa78a">
+    <input type="hidden" name="redirect" value="https://fitforge-site.netlify.app/thank-you.html">
+
+
+
+
+
+
+    <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Full Name</label>
+        <input type="text" id="name" name="name"
+            class="form-input w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-red-600 focus:ring-red-600 text-white"
+            placeholder="Your Name" required>
+        <p id="name-error" class="text-red-500 text-xs mt-1 hidden">Please enter your full name.</p>
+    </div>
+
+    <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Email Address</label>
+        <input type="email" id="email" name="email"
+            class="form-input w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-red-600 focus:ring-red-600 text-white"
+            placeholder="you@example.com" required>
+        <p id="email-error" class="text-red-500 text-xs mt-1 hidden">Enter a valid email address.</p>
+    </div>
+
+    <div class="mb-6">
+        <label for="phone" class="block text-sm font-medium text-gray-400 mb-1">Phone Number</label>
+        <input type="tel" id="phone" name="phone"
+            class="form-input w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-red-600 focus:ring-red-600 text-white"
+            placeholder="9876543210"
+            pattern="^[6-9]\d{9}$" maxlength="10" required>
+        <p id="phone-error" class="text-red-500 text-xs mt-1 hidden">
+            Enter a valid 10-digit Indian mobile number (starting with 6–9).
+        </p>
+    </div>
+
+    <div class="mb-6">
+        <label for="message" class="block text-sm font-medium text-gray-400 mb-1">Message</label>
+        <textarea id="message" name="message" rows="4"
+            class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-red-600 focus:ring-red-600 text-white"
+            placeholder="How can we help?"></textarea>
+    </div>
+
+    <button type="submit"
+        class="w-full bg-red-600 text-white font-bold py-3 rounded-full hover:bg-red-700 transition duration-300 shadow-lg">
+        GET YOUR FREE PASS
+    </button>
+
+
+</form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <p class="text-xl font-bold text-red-600">FIT FORGE</p>
+                <p class="text-gray-400 text-sm">123 Fitness Ave, Suite 100, Metropolis, 90210</p>
+                <p class="text-gray-400 text-sm">Email: info@fitforge.com | Phone: (555) 123-4567</p>
+            </div>
+            
+            <div class="flex justify-center space-x-6 mb-4">
+                <!-- Social Media Links Updated -->
+                <a href="https://www.instagram.com/" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                <a href="https://twitter.com/" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+            </div>
+            
+            <p class="text-xs text-gray-600 mt-4">&copy; 2025 FIT FORGE Gym. All Rights Reserved. Demo Project.</p>
+        </div>
+    </footer>
+    <script>
+  // Re-enable small UI features: icons, mobile menu, plan CTA, and confirmation modal + normal submit
+
+  // Initialize Lucide icons
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // Reusable modal function (same API as before)
+  function showCustomMessage(iconName, title, message, ctaText, ctaAction, secondaryCtaText, secondaryCtaAction, isConfirmation = false, iconColor = 'text-red-600', borderColor = 'border-red-600') {
+    const existingMessage = document.getElementById('custom-message-container');
+    if (existingMessage) existingMessage.remove();
+
+    const messageContainer = document.createElement('div');
+    messageContainer.id = 'custom-message-container';
+
+    let ctaButtonHtml = '';
+    if (ctaText) {
+      const ctaClass = 'bg-red-600 hover:bg-red-700';
+      ctaButtonHtml = `<button id="cta-message" class="${ctaClass} text-white font-semibold py-2 px-6 rounded-full transition">${ctaText}</button>`;
+    }
+
+    let secondaryCtaButtonHtml = '';
+    if (secondaryCtaText) {
+      secondaryCtaButtonHtml = `<button id="secondary-cta-message" class="bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 px-6 rounded-full transition ml-4">${secondaryCtaText}</button>`;
+    }
+
+    messageContainer.innerHTML = `
+      <div class="fixed inset-0 bg-black bg-opacity-70 z-[100] flex items-center justify-center p-4">
+        <div class="bg-gray-900 p-6 rounded-xl shadow-2xl max-w-sm w-full text-center border-t-4 ${borderColor}">
+          <i data-lucide="${iconName}" class="w-8 h-8 ${iconColor} mx-auto mb-3"></i>
+          <p class="text-white text-lg font-semibold mb-4">${title}</p>
+          <p class="text-gray-400 mb-4">${message}</p>
+          <div class="flex justify-center mt-4">
+            ${ctaButtonHtml}
+            ${secondaryCtaButtonHtml}
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(messageContainer);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // Attach events
+    const container = document.getElementById('custom-message-container');
+    if (document.getElementById('cta-message')) {
+      document.getElementById('cta-message').addEventListener('click', () => {
+        container.remove();
+        if (ctaAction) ctaAction();
+      });
+    }
+    if (document.getElementById('secondary-cta-message')) {
+      document.getElementById('secondary-cta-message').addEventListener('click', () => {
+        container.remove();
+        if (secondaryCtaAction) secondaryCtaAction();
+      });
+    }
+
+    // allow clicking the backdrop to close (if not a confirmation)
+    if (!isConfirmation) {
+      container.addEventListener('click', (e) => {
+        if (e.target === container) container.remove();
+      });
+    }
+  }
+
+  // DOM logic: menu, CTAs, and form confirmation that submits normally to Web3Forms
+  document.addEventListener('DOMContentLoaded', () => {
+    // Mobile menu toggle (safe even if elements missing)
+    const mobileButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileButton && mobileMenu) {
+      mobileButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    }
+
+    // Pricing plan CTAs — they show the contact modal and scroll to contact
+    document.querySelectorAll('.js-plan-cta').forEach(cta => {
+      cta.addEventListener('click', (e) => {
+        e.preventDefault();
+        showCustomMessage(
+          'mail',
+          'Contact Us to Enroll',
+          'To secure your membership and discuss payment options, please reach out to us via the contact form below.',
+          'Go to Contact Form',
+          () => { document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); },
+          null,
+          null,
+          false
+        );
+      });
+    });
+
+    // Form confirmation: if your form uses Web3Forms action (normal POST), we intercept to show confirmation,
+    // then call form.submit() which will send the POST to Web3Forms and let it handle the response/redirect.
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        // If the form was submitted programmatically already, allow; otherwise intercept to confirm
+        if (contactForm.__submitting) return; // guard
+        e.preventDefault();
+
+        showCustomMessage(
+          'circle-help',
+          'Confirm Submission',
+          'Are you sure you want to submit your details? This will send your message to the gym owner.',
+          'Yes, Submit',
+          () => {
+            // Mark submitting, show a quick sending modal (brief)
+            contactForm.__submitting = true;
+            showCustomMessage('loader', 'Sending...', 'Please wait while we submit your information...', null, null, null, null, false, 'text-gray-400', 'border-gray-600');
+
+            // Small delay to show the sending modal, then submit normally (will navigate per Web3Forms)
+            setTimeout(() => {
+              // This does a normal form POST to the form action (Web3Forms) and allows their redirect or response.
+              contactForm.submit();
+            }, 500);
+          },
+          'No, Cancel',
+          () => { /* do nothing */ },
+          true
+        );
+      });
+    }
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email");
+    const phoneField = document.getElementById("phone");
+
+    const nameError = document.getElementById("name-error");
+    const emailError = document.getElementById("email-error");
+    const phoneError = document.getElementById("phone-error");
+
+    // Validate Name
+    nameField.addEventListener("input", () => {
+        if (nameField.value.trim().length < 2) {
+            nameError.classList.remove("hidden");
+        } else {
+            nameError.classList.add("hidden");
+        }
+    });
+
+    // Validate Email
+    emailField.addEventListener("input", () => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailField.value)) {
+            emailError.classList.remove("hidden");
+        } else {
+            emailError.classList.add("hidden");
+        }
+    });
+
+    // Validate Indian Phone Number
+    phoneField.addEventListener("input", () => {
+        const phonePattern = /^[6-9]\d{9}$/;
+
+        if (!phonePattern.test(phoneField.value)) {
+            phoneError.classList.remove("hidden");
+        } else {
+            phoneError.classList.add("hidden");
+        }
+    });
+
+});
+</script>
+
+</body>
+
+
+</html>
